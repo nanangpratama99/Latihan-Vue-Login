@@ -3,6 +3,7 @@ package com.example.students.repository;
 import java.util.List;
 
 import com.example.students.model.Students;
+import com.example.students.model.Register;
 
 public interface IStudentsRepository {
     public Students insertStudents(Students students);
@@ -15,6 +16,6 @@ public interface IStudentsRepository {
 
     public Students getStudents(int id);
 
-    public Students loginStudent(String email, String jenis_kelamin);
+    public Register loginStudent(String email, String password);
 
 }

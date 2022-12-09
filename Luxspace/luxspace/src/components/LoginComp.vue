@@ -17,7 +17,7 @@
         <div class="input-login">
           <div class="span-details">Password</div>
           <input
-            v-model="LoginInfo.jenis_kelamin"
+            v-model="LoginInfo.password"
             type="password"
             name="password"
             id="password"
@@ -28,6 +28,12 @@
       </div>
       <div class="button-login">
         <input type="submit" value="Login" />
+      </div>
+      <div>
+        <p>Don't have an account</p>
+        <router-link to="/register">
+          <p>Register Now</p>
+        </router-link>
       </div>
     </form>
   </div>
@@ -43,19 +49,20 @@ export default {
     return {
       LoginInfo: {
         email: null,
-        jenis_kelamin: null,
+        password: null,
       },
     };
   },
   methods: {
     LoginFunc() {
       let data = this.LoginInfo;
-      console.log(data.email + data.jenis_kelamin);
+      console.log(data.email + data.password);
+      // localStorage.set
       LoginServices.login(data)
         .then((response) => {
           console.log(response.data);
           this.$session.start();
-          this.$session.set("jwt", response.data);
+          this.$session.flash.set("jwt", response.data);
           // Vue.http.headers.common['Authorization'] = 'Bearer ' + response.data
           this.$router.push("/home");
           let test = this.$session.getAll();

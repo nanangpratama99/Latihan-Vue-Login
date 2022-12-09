@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.students.model.Students;
+import com.example.students.model.Register;
 import com.example.students.repository.IStudentsRepository;
 
 @Repository
@@ -71,9 +72,9 @@ public class StudentsRepository implements IStudentsRepository {
     }
 
     @Override
-    public Students loginStudent(String email, String jenis_kelamin) {
-        String query = "SELECT * FROM tb_students WHERE email = ? AND jenis_kelamin = ?";
-        return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(Students.class), email, jenis_kelamin);
+    public Register loginStudent(String email, String password) {
+        String query = "SELECT * FROM tb_register WHERE email = ? AND password = ?";
+        return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(Register.class), email, password);
     }
 
 

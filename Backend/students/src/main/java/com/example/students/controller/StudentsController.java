@@ -20,7 +20,7 @@ import com.example.students.service.IStudentsService;
 import com.example.students.service.IRegisterServices;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/students")
 public class StudentsController {
 
@@ -56,8 +56,8 @@ public class StudentsController {
     }
 
     @PostMapping("/login")
-    public Students loginStudent(@RequestBody Login data) {
-        return studentsService.loginStudent(data.getEmail(), data.getJenis_kelamin());
+    public Register loginStudent(@RequestBody Login data) {
+        return studentsService.loginStudent(data.getEmail(), data.getpassword());
     }
 
     @PostMapping("/register")

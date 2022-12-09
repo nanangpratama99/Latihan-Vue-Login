@@ -34,8 +34,14 @@
         <div>
           <form action="">
             <h3>Special Letter</h3>
-            <input class="input" type="" placeholder="Masukkan email" />
-            <button class="btn2"><img src="" alt="" />Kirim</button>
+            <input
+              class="input py-1 rounded border border-primary"
+              type=""
+              placeholder="Masukkan email"
+            />
+            <button class="btn2 btn btn-primary ml-2">
+              <img src="" alt="" />Kirim
+            </button>
           </form>
         </div>
       </div>

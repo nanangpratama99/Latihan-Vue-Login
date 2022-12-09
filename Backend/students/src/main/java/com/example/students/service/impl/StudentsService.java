@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.students.model.Register;
 import com.example.students.model.Students;
 import com.example.students.repository.IStudentsRepository;
 import com.example.students.service.IStudentsService;
@@ -46,9 +47,9 @@ public class StudentsService implements IStudentsService {
     }
 
     @Override
-    public Students loginStudent(String email, String jenis_kelamin) {
+    public Register loginStudent(String email, String password) {
         // TODO Auto-generated method stub
-        return studentsRepository.loginStudent(email, jenis_kelamin);
+        return studentsRepository.loginStudent(email, password);
     }
   
 }

@@ -3,6 +3,7 @@ package com.example.students.service;
 import java.util.List;
 
 import com.example.students.model.Students;
+import com.example.students.model.Register;
 
 public interface IStudentsService {
     public Students insertStudents(Students students);
@@ -15,5 +16,5 @@ public interface IStudentsService {
 
     public Students getStudent(int id);
 
-    public Students loginStudent(String email, String jenis_kelamin);
+    public Register loginStudent(String email, String password);
 }

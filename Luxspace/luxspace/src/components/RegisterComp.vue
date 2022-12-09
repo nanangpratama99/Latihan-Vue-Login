@@ -52,9 +52,9 @@
             <div class="span-details">Password</div>
             <input
               v-model="infoRegist.password"
-              type="text"
+              type="password"
               name=""
-              id=""
+              id="pass1"
               placeholder="Input Pasword"
               required
             />
@@ -62,21 +62,22 @@
           <div class="sub-input-box">
             <div class="span-details">Confirm Password</div>
             <input
-              v-model="infoRegist.password"
-              type="text"
+              v-model="verifpass"
+              type="password"
               name=""
-              id=""
+              id="pass2"
               placeholder="Repeat Pasword"
               required
             />
           </div>
         </div>
+        <p class="text-danger" v-show="success">Maaf! Password Salah</p>
       </div>
 
       <div class="gender-details">
-        <input type="radio" name="gender" id="dot-1" />
-        <input type="radio" name="gender" id="dot-2" />
-        <input type="radio" name="gender" id="dot-3" />
+        <input v-model="infoRegist.gender" type="radio" value="Male" name="gender" id="dot-1" />
+        <input v-model="infoRegist.gender" type="radio" value="Female" name="gender" id="dot-2" />
+        <input v-model="infoRegist.gender" type="radio" value="Netral" name="gender" id="dot-3" />
         <span class="gender-title">Gender</span>
         <div class="category">
           <label for="dot-1">
@@ -97,12 +98,19 @@
       <div class="button">
         <input type="submit" value="Register" />
       </div>
+
+      <div>
+        <p>Already Have an account</p>
+        <router-link to="/">
+          <a href="">Please Login</a>
+        </router-link>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
-import LoginServices from '@/services/LoginServices';
+import LoginServices from "@/services/LoginServices";
 
 export default {
   name: "RegisterS",
@@ -116,25 +124,31 @@ export default {
         phone_number: null,
         username: null,
       },
+      verifpass: null,
+      success: false,
     };
   },
   methods: {
     RegistFunc() {
       // this.infoRegist.password = this.
-      console.log(this.$CryptoJS.AES.encrypt(this.infoRegist.password).toString());
+      // console.log(
+      //   this.$CryptoJS.AES.encrypt(this.verifpass).toString()
+      // );
       // console.log(typeof(this.infoRegist.password))
       let data = this.infoRegist;
+      if (data.password === this.verifpass) {
+        LoginServices.register(data)
+          .then((response) => {
+            console.log(response.data);
+            this.$router.push("/");
+          })
 
-      LoginServices.register(data)
-      .then((response) => {
-        console.log(response.data);
-
-      })
-
-      .catch((e) =>{
-        console.log(e);
-      });
-
+          .catch((e) => {
+            console.log(e);
+          });
+      } else {
+        this.success = true;
+      }
     },
   },
 };

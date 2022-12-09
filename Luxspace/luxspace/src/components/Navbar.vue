@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">JUNNED</a>
       <button
         class="navbar-toggler"
         type="button"
